@@ -2,8 +2,11 @@ import { useState } from "react";
 import AdminSidebar from "../../components/admin/AdminSidebar";
 import AdminTopbar from "../../components/admin/AdminTopbar";
 import { Pencil, Trash2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const UsersPage = () => {
+  const navigate = useNavigate();
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
@@ -32,7 +35,10 @@ const UsersPage = () => {
             <h1 className="text-xl sm:text-2xl font-bold text-[#1E3A5F]">
               Users
             </h1>
-            <button className="w-full sm:w-auto bg-[#146EF5] text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+            <button
+              className="w-full sm:w-auto bg-[#146EF5] text-white px-6 py-2.5 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+              onClick={() => navigate("/admin/users/add")}
+            >
               + Add User
             </button>
           </div>

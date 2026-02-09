@@ -7,6 +7,7 @@ import AdminLogin from "./pages/admin/AdminLogin";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import UsersPage from "./pages/admin/UsersPage";
 import AttendancePage from "./pages/admin/AttendancePage";
+import AddUser from "./pages/admin/AddUser";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/admin/dashboard" element={<AdminDashboard />} />
         <Route path="/admin/users" element={<UsersPage />} />
         <Route path="/admin/attendance" element={<AttendancePage />} />
+        <Route path="/admin/users/add" element={<AddUser />} />
       </Routes>
     </BrowserRouter>
   );
