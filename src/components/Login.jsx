@@ -3,15 +3,17 @@ import tick from "../assets/tick.png";
 import logo from "../assets/logo.png";
 import { useNavigate } from "react-router-dom";
 
-
-const Login = () => {
-    const navigate = useNavigate();
+const Login = ({ role = "user" }) => {
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // TEMP login success
-    navigate("/dashboard");
+    if (role === "admin") {
+      navigate("/admin/dashboard");
+    } else {
+      navigate("/dashboard");
+    }
   };
 
   return (
@@ -34,24 +36,26 @@ const Login = () => {
         {/* FORM CONTENT */}
         <div className="relative z-10 w-full max-w-md">
           {/* LOGO IMAGE */}
-          <img
-            src={logo}
-            alt="AceVerify logo"
-            className="w-full h-auto mb-2"
-          />
+          <img src={logo} alt="AceVerify logo" className="w-full h-auto mb-2" />
 
           {/* Sign in heading */}
-          <h2 className="text-lg font-normal mb-6 text-gray-800 font-['Poppins']">Sign in</h2>
+          <h2 className="text-lg font-normal mb-6 text-gray-800 font-['Poppins']">
+            Sign in
+          </h2>
 
-<form onSubmit={handleSubmit}>
-            <label className="block text-sm mb-2 text-gray-700 font-normal font-['Poppins']">Email</label>
+          <form onSubmit={handleSubmit}>
+            <label className="block text-sm mb-2 text-gray-700 font-normal font-['Poppins']">
+              Email
+            </label>
             <input
               type="email"
               placeholder="someone@example.com"
               className="w-full border border-gray-300 rounded px-4 py-2.5 mb-5 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
 
-            <label className="block text-sm mb-2 text-gray-700 font-normal font-['Poppins']">Password</label>
+            <label className="block text-sm mb-2 text-gray-700 font-normal font-['Poppins']">
+              Password
+            </label>
             <input
               type="password"
               placeholder="Password"
@@ -59,18 +63,17 @@ const Login = () => {
             />
 
             <div className="flex items-center gap-2 text-sm mb-6">
-              <input 
-                type="checkbox" 
-                className="w-4 h-4 accent-blue-600"
-              />
-              <span className="text-gray-700 font-['Poppins'] font-normal">Remember Me</span>
+              <input type="checkbox" className="w-4 h-4 accent-blue-600" />
+              <span className="text-gray-700 font-['Poppins'] font-normal">
+                Remember Me
+              </span>
             </div>
 
             <button
               type="submit"
               className="w-full bg-[#146EF5] text-white py-2.5 rounded text-sm font-normal hover:bg-blue-700 transition-colors font-['Inter']"
             >
-              Sign in
+              {role === "admin" ? "Admin Login" : "Sign in"}
             </button>
           </form>
         </div>
